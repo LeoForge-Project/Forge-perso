@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FORGE">
+  <meta name="theme-color" content="#080808">
+  <title>FORGE</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Sidebar ── -->
+  <nav id="sidebar">
+    <div class="sb-logo">F</div>
+    <div class="sb-nav">
+      <button class="sb-btn" data-tab="dashboard" onclick="go('dashboard')" title="Dashboard">⊞</button>
+      <button class="sb-btn" data-tab="habits"    onclick="go('habits')"    title="Habitudes">☑</button>
+      <button class="sb-btn" data-tab="sport"     onclick="go('sport')"     title="Sport">⚡</button>
+      <button class="sb-btn" data-tab="calendar"  onclick="go('calendar')"  title="Calendrier">📅</button>
+      <button class="sb-btn" data-tab="scanner"   onclick="go('scanner')"   title="Scanner EDT">📷</button>
+      <div class="sb-sep"></div>
+      <button class="sb-btn" data-tab="chat"      onclick="go('chat')"      title="IA Conseiller" style="font-size:13px">✦ IA</button>
+    </div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main id="main">
+
+    <!-- Dashboard -->
+    <div id="view-dashboard" class="view"></div>
+
+    <!-- Habitudes -->
+    <div id="view-habits" class="view"></div>
+
+    <!-- Sport -->
+    <div id="view-sport" class="view"></div>
+
+    <!-- Calendrier -->
+    <div id="view-calendar" class="view" style="padding:16px 20px 20px"></div>
+
+    <!-- Scanner EDT -->
+    <div id="view-scanner" class="view"></div>
+
+    <!-- Chat IA -->
+    <div id="view-chat" class="view">
+      <!-- Sidebar conversations -->
+      <div class="chat-sidebar">
+        <div class="chat-sidebar-head">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:12px;letter-spacing:1px">CONVERSATIONS</div>
+            <button onclick="newChat()" style="width:24px;height:24px;border-radius:5px;background:rgba(200,255,0,.1);color:var(--accent);font-size:14px;display:flex;align-items:center;justify-content:center">+</button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px" id="chat-mode-btns">
+            <button class="chat-sug on" onclick="setChatMode(this,'business')" data-mode="business">💼 Business</button>
+            <button class="chat-sug" onclick="setChatMode(this,'tiktok')" data-mode="tiktok">🎵 TikTok</button>
+            <button class="chat-sug" onclick="setChatMode(this,'coach')" data-mode="coach">🧠 Coach</button>
+          </div>
+        </div>
+        <div class="chat-list" id="chat-list"></div>
+      </div>
+
+      <!-- Chat main -->
+      <div class="chat-main">
+        <div class="chat-header">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px" id="chat-title">Nouvelle conversation</div>
+            <div class="label" id="chat-mode-label">Mode : Business</div>
+          </div>
+          <button onclick="newChat()" class="btn-ghost" style="font-size:11px">+ Nouveau</button>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input-area">
+          <div class="chat-suggestions" id="chat-sugs"></div>
+          <div class="chat-input-wrap">
+            <textarea id="chat-input" placeholder="Pose ta question…" rows="1"></textarea>
+            <button class="chat-send" id="chat-send-btn" onclick="sendMessage()">↑</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Mobile nav -->
+<nav id="mobile-nav">
+  <button class="mnav-btn" data-tab="dashboard" onclick="go('dashboard')">⊞<span>Home</span></button>
+  <button class="mnav-btn" data-tab="habits"    onclick="go('habits')">☑<span>Habits</span></button>
+  <button class="mnav-btn" data-tab="sport"     onclick="go('sport')">⚡<span>Sport</span></button>
+  <button class="mnav-btn" data-tab="calendar"  onclick="go('calendar')">📅<span>Agenda</span></button>
+  <button class="mnav-btn" data-tab="chat"      onclick="go('chat')" style="font-size:12px">✦<span>IA</span></button>
+</nav>
+
+<!-- Habit modal -->
+<div id="habit-modal" class="modal-bg" onclick="if(event.target===this)closeModal('habit-modal')">
+  <div class="modal-box"><div id="habit-modal-body"></div></div>
+</div>
+
+<!-- Notif -->
+<div id="notif"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
