@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════
 
 // 👉 Colle ta clé API Anthropic ici
-const API_KEY = 'REMPLACE_PAR_TA_CLE_API'; // sk-ant-...
+const API_KEY = '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'; // sk-ant-...
 
 // ═══════════════════════════════════════════════════
 //  DONNÉES INITIALES
