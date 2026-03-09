@@ -1100,4 +1100,4 @@ document.addEventListener('DOMContentLoaded', () => {
   renderChatList();
   clearMessages();
   renderSuggestions();
-});
+});;
